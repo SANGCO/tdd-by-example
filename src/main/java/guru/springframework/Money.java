@@ -37,6 +37,11 @@ public class Money implements Expression {
         return new Money(amount / bank.rate(this.currency, to), to);
     }
 
+    @Override
+    public Expression plus(Expression addend) {
+        return new Sum(this, addend);
+    }
+
     public boolean equals(Object object) {
         Money money = (Money) object;
         return amount == money.amount
